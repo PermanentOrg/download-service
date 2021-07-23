@@ -1,7 +1,7 @@
 {
-  "name": "@PermanentOrg/upload-service",
+  "name": "@PermanentOrg/download-service",
   "version": "0.0.0",
-  "description": "A service responsible for handling upload requests",
+  "description": "A service responsible for handling download requests",
   "main": "lib/index.js",
   "scripts": {
     "build": "node ./node_modules/@babel/cli/bin/babel.js --extensions \".ts,.tsx\" src -d lib",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PermanentOrg/upload-service.git"
+    "url": "git+https://github.com/PermanentOrg/download-service.git"
   },
   "author": {
     "name": "Permanent.org",
@@ -25,7 +25,8 @@
       "name": "Dan Schultz"
     },
     {
-      "name": "Mithuna Krishna"
+      "name": "Mithuna Krishna",
+      "email": "mkrishna@permanent.org"
     },
     {
       "name": "Jason Owen",
@@ -42,7 +43,7 @@
   ],
   "license": "AGPL-3.0",
   "bugs": {
-    "url": "https://github.com/PermanentOrg/upload-service/issues"
+    "url": "https://github.com/PermanentOrg/download-service/issues"
   },
   "homepage": "https://permanent.org",
   "engines": {
@@ -50,7 +51,6 @@
   },
   "dependencies": {
     "@sentry/node": "^5.27.3",
-    "aws-sdk": "^2.763.0",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "express-winston": "^4.1.0",

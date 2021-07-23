@@ -13,5 +13,5 @@ if ('SENTRY_DSN' in process.env
 
 const port = process.env.PORT ?? 3000;
 app.listen(port, () => {
-  logger.info(`upload-service listening on port ${port}`);
+  logger.info(`download-service listening on port ${port}`);
 });
