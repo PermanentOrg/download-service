@@ -1,9 +1,7 @@
-![unit tests](https://github.com/PermanentOrg/upload-service/workflows/unit%20tests/badge.svg)
-# Permanent.org Upload Service
+![unit tests](https://github.com/PermanentOrg/download-service/workflows/unit%20tests/badge.svg)
+# Permanent.org download Service
 
-The upload service is responsible for handling upload requests.
-
-It does not process files, but it does provides the client with the needed information to upload to S3 directly.
+The download service is responsible for handling download requests.
 
 ## Structure
 
@@ -23,31 +21,9 @@ It does not process files, but it does provides the client with the needed infor
 npm install
 ```
 
-2. [Configure AWS credentials.](https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/setting-credentials-node.html)
+2. Configure Sentry
 
-These credentials should be associated with an account that has `s3:PutObject` access to the bucket objects you would like API clients to be able to write to.
-
-An example custom policy:
-
-```
-{
-    "Statement": [
-        {
-            "Action": [
-                "s3:PutObject"
-            ],
-            "Effect": "Allow",
-            "Resource": [
-                "arn:aws:s3:::MyBucketNameGoesHere/*"
-            ]
-        }
-    ]
-}
-```
-
-3. Configure Sentry
-
-If you want to use Sentry, you must pass environment variables containing the [Sentry DSN](https://docs.sentry.io/product/sentry-basics/dsn-explainer/) and the [Sentry environment](https://docs.sentry.io/product/sentry-basics/environments/) that you will use for this project.
+If you want to use Sentry, you must pass environment variables containing the [Sentry DSN]() and the [Sentry environment](https://docs.sentry.io/product/sentry-basics/environments/) that you will use for this project.
 
 **.env**
 ```
@@ -84,25 +60,6 @@ Returns a health check.
 
 - `status`: either `available` or `unavailable`.
 - `message`: a more detailed explanation about the health status.
-
-### POST /api/fileDestinationUrl
-#### Input
-##### Required
-
-- `bucket`: the AWS S3 bucket the file will be passed to (e.g. `permanent-local`).
-- `fileType`: the mime type of the file being uploaded (e.g. `image/png`),
-- `maxSize`: the maximum file size that the destination should accept,
-
-##### Optional
-
-- `fileName`: the destination file name within the bucket.
-- `path`: the destination path within the bucket.
-
-#### Output
-- `destinationUrl`: the URL that will ultimately hold the file once it has been uploaded.
-- `presignedPost`: an AWS S3 presigned post which will accept the file.  This post will contain:
-  - `url`: the URL that the file should be POSTed to.
-  - `fields`: an array of fields which must be submitted as part of the POST body. These fields must appear before the file content itself.
 
 ## Contributing
 
